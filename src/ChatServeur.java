@@ -6,8 +6,10 @@ import java.util.*;
 
 
 public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
-
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3711570597258749865L;
 	private int messageCount=0;
 	private Hashtable<Integer, Message> messages = new Hashtable<Integer, Message>();
 	private ArrayList<ChatClient> connectes;
@@ -64,8 +66,9 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 	}
 	// Who let the dogs out?
 	public void who() throws RemoteException {
-		
-		
+		for(int i= 0; i < connectes.size(); i++){
+			System.out.println("Membre" + connectes.get(i).getNom() + " bound in registry");
+		}
 	}
 	// Dites "splayMsgs"
 	public void displayMsgs(int idDernier, String nom) throws RemoteException {
