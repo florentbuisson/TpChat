@@ -2,7 +2,7 @@ import java.rmi.*;
 
 public interface ChatInterface extends Remote {
 	
-	public void connect(String nom) throws RemoteException;
+	public void connect(ChatClient client) throws RemoteException;
 	
 	public void bye(ChatClient nomClient) throws RemoteException;
 	
