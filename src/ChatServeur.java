@@ -29,8 +29,8 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 		// Calcul de l’URL du serveur
 		URL = "//"+InetAddress.getLocalHost().getHostName()+":"+
 		port+"/mon_serveur";
-		Naming.rebind(URL, chat1);
-		} catch (Exception exc) { ...}
+		Naming.rebind(URL,chat1);
+		} catch (Exception exc) {}
 	}
 	
 	
