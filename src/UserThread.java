@@ -10,6 +10,10 @@ public class UserThread extends DisplayThread {
 		while (true) {
 			Scanner sc = new Scanner(System.in);
 			String line = sc.nextLine();
+			int cas = trierLigne(line);
+			appliquer(cas, line);
+			
+			
 		}
 	}
 	
@@ -19,19 +23,24 @@ public class UserThread extends DisplayThread {
 			line = line.substring(5);
 			Message msg = new Message(line);
 			serv.send(msg, cli);
+			break;
+		case 2:
+			serv.bye(cli);
+			break;
+		case 0:
+			System.out.println("Erreur : cette commande n'existe pas.\n" +
+					"tapez send pour envoyer un message ou bye pour quitter le serveur de chat.");
 		}
 	}
 	
 	public int trierLigne(String line) {
-		int resTri = 0;
-		
 		if (line.substring(0, 5).equals("send ")) {
-			resTri = 1;
+			return 1;
 		} else if (line.substring(0, 4).equals("bye ")) {
-			resTri = 2;
+			return 2;
+		} else {
+			return 0;
 		}
-		
-		return resTri;
 	}
 
 }

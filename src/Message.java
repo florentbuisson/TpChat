@@ -4,6 +4,10 @@ public class Message {
 	private int id;
 	private String contenu;
 	
+	public Message(String line) {
+		contenu = line;
+	}
+	
 	public int getId() {
 		return id;
 	}
