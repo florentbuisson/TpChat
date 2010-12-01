@@ -14,7 +14,7 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 		int port;
 		String URL;
 		try {
-		// transformation d’une chaine de caracteres en entier
+		// transformation d'une chaine de caracteres en entier
 		Integer I = new Integer(args[0]);
 		port = I.intValue();
 		} catch (Exception ex) {
@@ -24,9 +24,9 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 		try {
 		// Creation du serveur de nom - rmiregistry
 		Registry registry = LocateRegistry.createRegistry(port);
-		// Creation d’une instance de l’objet serveur
+		// Creation d'une instance de l’objet serveur
 		ChatInterface chat1 = new ChatServeur();
-		// Calcul de l’URL du serveur
+		// Calcul de l'URL du serveur
 		URL = "//"+InetAddress.getLocalHost().getHostName()+":"+
 		port+"/mon_serveur";
 		Naming.rebind(URL,chat1);
