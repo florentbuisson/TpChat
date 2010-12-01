@@ -1,4 +1,7 @@
+import java.rmi.RemoteException;
 
-public class ChatInterface {
+public interface ChatInterface {
+	
+	public void connecter() throws RemoteException;
 
 }
