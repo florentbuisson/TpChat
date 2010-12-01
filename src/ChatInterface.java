@@ -10,6 +10,6 @@ public interface ChatInterface extends Remote {
 	
 	public void displayMsgs(int idDernier, String nom) throws RemoteException;
 	
-	public void send(String msg, String nomCli);
+	public void send(Message msg, Client cli);
 
 }

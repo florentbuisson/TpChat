@@ -17,7 +17,8 @@ public class UserThread extends DisplayThread {
 		switch (cas) {
 		case 1:
 			line = line.substring(5);
-			serv.send
+			Message msg = new Message(line);
+			serv.send(msg, cli);
 		}
 	}
 	
