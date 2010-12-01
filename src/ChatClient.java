@@ -26,17 +26,17 @@ public class ChatClient {
 
 	public static void main(String args[]) {
 		try { 
+			
 			ChatClient cli = new ChatClient("toris");
-			// Recuperation du stub sur l'objet serveur 
+			
+			// On recupere le stub sur l'objet serveur 
 			ChatInterface obj = (ChatInterface) Naming.lookup("chat1"); 
-			// Appel d'une methode sur l'objet distant. 
+			
+			// On se connecte au serveur 
 			obj.connect(cli.getNom());
 			
-			boolean connecte = true;
-			while (connecte) {
-				obj.displayMsgs(cli.getIdDernier(), cli.getNom());
-				//sleep(30000);
-			}
+			DisplayThread dt = new DisplayThread("thread1", obj, cli);
+			dt.run();
 			
 		} catch (Exception exc) {} 
 		
