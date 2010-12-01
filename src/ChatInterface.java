@@ -4,7 +4,7 @@ public interface ChatInterface extends Remote {
 	
 	public void connect(String nom) throws RemoteException;
 	
-	public void bye(String nom) throws RemoteException;
+	public void bye(ChatClient nomClient) throws RemoteException;
 	
 	public void who() throws RemoteException;
 	
