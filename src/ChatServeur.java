@@ -75,8 +75,7 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 		for(int i = cli.getIdDernier()+1; i < messageCount; i++){
 			cli.showMsg(messages.get(i), i);
 		}
-	}
-	@Override
+	} 
 	public boolean isConnected(ChatClient cli) {
 		if(connectes.contains(cli)){
 			return true;
