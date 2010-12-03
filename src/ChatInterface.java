@@ -11,5 +11,7 @@ public interface ChatInterface extends Remote {
 	public void displayMsgs(int idDernier, String nom) throws RemoteException;
 	
 	public void send(Message msg, ChatClient cli);
+	
+	public boolean isConnected(ChatClient cli);
 
 }

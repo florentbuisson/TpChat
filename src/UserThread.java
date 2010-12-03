@@ -17,7 +17,7 @@ public class UserThread extends DisplayThread {
 			} catch (RemoteException rem) {
 				
 			}
-			
+			serv.isConnected(cli);
 			
 		}
 	}
