@@ -1,3 +1,4 @@
+import java.rmi.RemoteException;
 import java.util.*;
 
 public class UserThread extends DisplayThread {
@@ -11,13 +12,17 @@ public class UserThread extends DisplayThread {
 			Scanner sc = new Scanner(System.in);
 			String line = sc.nextLine();
 			int cas = trierLigne(line);
-			appliquer(cas, line);
+			try {
+				appliquer(cas, line);
+			} catch (RemoteException rem) {
+				
+			}
 			
 			
 		}
 	}
 	
-	public void appliquer(int cas, String line) {
+	public void appliquer(int cas, String line) throws RemoteException {
 		switch (cas) {
 		case 1:
 			line = line.substring(5);
