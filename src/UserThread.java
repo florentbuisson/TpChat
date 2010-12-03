@@ -15,10 +15,10 @@ public class UserThread extends DisplayThread {
 			int cas = trierLigne(line);
 			try {
 				appliquer(cas, line);
+				conn = serv.isConnected(cli);
 			} catch (RemoteException rem) {
 				
 			}
-			conn = serv.isConnected(cli);
 		}
 	}
 	
@@ -26,7 +26,7 @@ public class UserThread extends DisplayThread {
 		switch (cas) {
 		case 1:
 			line = line.substring(5);
-			Message msg = new Message(line);
+			Message msg = new Message(line, cli);
 			serv.send(msg, cli);
 			break;
 		case 2:

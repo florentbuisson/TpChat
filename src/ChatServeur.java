@@ -20,24 +20,28 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 		String URL;
 		
 		try {
-		// transformation d'une chaine de caracteres en entier
-		Integer I = new Integer(args[0]);
-		port = I.intValue();
+			// transformation d'une chaine de caracteres en entier
+			Integer I = new Integer(args[0]);
+			port = I.intValue();
 		} catch (Exception ex) {
-		System.out.println(" Please enter: Server <port>");
-		return;
+			System.out.println(" Please enter: Server <port>");
+			return;
 		}
+		
 		try {
-		// Creation du serveur de nom - rmiregistry
-		Registry registry = LocateRegistry.createRegistry(port);
-		// Creation d'une instance de l’objet serveur
-		ChatInterface chat1 = new ChatServeur();
-		// Calcul de l'URL du serveur
-		URL = "//"+InetAddress.getLocalHost().getHostName()+":"+
-		port+"/mon_serveur";
-		Naming.rebind(URL,chat1);
-		System.out.println("ChatServeur" + " bound in registry");
-		} catch (Exception exc) {}
+			// Creation du serveur de nom - rmiregistry
+			System.out.println(port);
+			Registry registry = LocateRegistry.createRegistry(port);
+			// Creation d'une instance de l'objet serveur
+			ChatInterface chat1 = new ChatServeur();
+			// Calcul de l'URL du serveur
+			URL = "//"+InetAddress.getLocalHost().getHostName()+":"+
+			port+"/chat1";
+			Naming.rebind(URL,chat1);
+			System.out.println("ChatServeur" + " bound in registry");
+		} catch (Exception exc) {
+			System.out.println("Creation et nommage du serveur rates");
+		}
 	}
 	
 	// Implementation du constructeur
@@ -53,14 +57,15 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 	// Connection d'un client au serveur
 	public void connect(ChatClient client) throws RemoteException {
 		if(!connectes.add(client)){
-			RemoteException ex = new RemoteException("Impossible de supprimer le client" + client.getNom());
+			System.out.println("Erreur");
+			RemoteException ex = new RemoteException("Impossible d'ajouter le client " + client.getNom());
 			throw ex;
 		}
 	}
 	// Deconnection client
 	public void bye(ChatClient client) throws RemoteException {
 		if(!connectes.remove(client)){
-			RemoteException ex = new RemoteException("Impossible de supprimer le client" + client.getNom());
+			RemoteException ex = new RemoteException("Impossible de supprimer le client " + client.getNom());
 			throw ex;
 		}
 	}
@@ -81,5 +86,9 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 			return true;
 		}
 		return false;
+	}
+	
+	public void test() {
+		System.out.println("methode non implementee");
 	}
 }
