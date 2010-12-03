@@ -8,7 +8,7 @@ public interface ChatInterface extends Remote {
 	
 	public void who() throws RemoteException;
 	
-	public void displayMsgs(int idDernier, String nom) throws RemoteException;
+	public void displayMsgs(ChatClient cli) throws RemoteException;
 	
 	public void send(Message msg, ChatClient cli);
 	
