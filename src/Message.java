@@ -7,12 +7,6 @@ public class Message implements Serializable{
 	public Message(String line) {
 		contenu = line;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getContenu() {
 		return contenu;
 	}

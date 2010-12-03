@@ -46,7 +46,7 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 		
 	}
 	// Implementation de la methode distante
-	public void sendMessage(Message msg) throws java.rmi.RemoteException {
+	public void send(Message msg, ChatClient cli) throws java.rmi.RemoteException {
 		messages.put(messageCount,msg);
 		messageCount++;
 	}
@@ -71,8 +71,16 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 		}
 	}
 	// Dites "splayMsgs"
-	public void displayMsgs(int idDernier, String nom) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+	public void displayMsgs(ChatClient cli) throws RemoteException {
+		for(int i = cli.getIdDernier()+1; i < messageCount; i++){
+			cli.showMsg(messages.get(i), i);
+		}
+	}
+	@Override
+	public boolean isConnected(ChatClient cli) {
+		if(connectes.contains(cli)){
+			return true;
+		}
+		return false;
 	}
 }
