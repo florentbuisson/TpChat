@@ -1,4 +1,4 @@
-
+import java.rmi.*;
 
 public class DisplayThread extends Thread {
 	
@@ -11,7 +11,7 @@ public class DisplayThread extends Thread {
 		this.cli = cli;
 	}
 	
-	public void run() {
+	public void run(){
 		while (true) {
 			try {
 				serv.displayMsgs(cli.getIdDernier(), cli.getNom());

@@ -33,7 +33,7 @@ public class ChatClient {
 			ChatInterface obj = (ChatInterface) Naming.lookup("chat1"); 
 			
 			// On se connecte au serveur 
-			obj.connect(cli.getNom());
+			obj.connect(cli);
 			
 			DisplayThread dt = new DisplayThread("thread1", obj, cli);
 			dt.run();
