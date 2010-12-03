@@ -1,15 +1,9 @@
+import java.io.Serializable;
 
-public class Message {
 
-	private int id;
+public class Message implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String contenu;
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getContenu() {
 		return contenu;
 	}
