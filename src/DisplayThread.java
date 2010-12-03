@@ -12,10 +12,12 @@ public class DisplayThread extends Thread {
 	}
 	
 	public void run(){
-		while (true) {
+		boolean conn = true;
+		while (conn) {
 			try {
-				serv.displayMsgs(cli.getIdDernier(), cli.getNom());
+				serv.displayMsgs(cli);
 				sleep(30000);
+				conn = serv.isConnected(cli);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

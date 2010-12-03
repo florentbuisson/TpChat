@@ -21,8 +21,13 @@ public class ChatClient {
 	public void setIdDernier(int idDernier) {
 		this.idDernier=idDernier;
 	}
+	
+	public void showMsg(Message msg, int id) {
+		System.out.println(msg.getContenu());
+		setIdDernier(id);
+	}
 
-/** main --------------------------------^---^------------------------------------- **/
+/** MAIN --------------------------------^---^------------------------------------- **/
 
 	public static void main(String args[]) {
 		try { 
@@ -37,6 +42,8 @@ public class ChatClient {
 			
 			DisplayThread dt = new DisplayThread("thread1", obj, cli);
 			dt.run();
+			UserThread ut = new UserThread("thread2", obj, cli);
+			ut.run();
 			
 		} catch (Exception exc) {} 
 		

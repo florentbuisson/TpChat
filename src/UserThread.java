@@ -8,7 +8,8 @@ public class UserThread extends DisplayThread {
 	}
 	
 	public void run() {
-		while (true) {
+		boolean conn = true;
+		while (conn) {
 			Scanner sc = new Scanner(System.in);
 			String line = sc.nextLine();
 			int cas = trierLigne(line);
@@ -17,8 +18,7 @@ public class UserThread extends DisplayThread {
 			} catch (RemoteException rem) {
 				
 			}
-			serv.isConnected(cli);
-			
+			conn = serv.isConnected(cli);
 		}
 	}
 	
