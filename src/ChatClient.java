@@ -1,8 +1,13 @@
+import java.io.Serializable;
 import java.rmi.Naming;
 
 
-public class ChatClient {
+public class ChatClient implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID=7384104961807751840L;
 	protected String nom;
 	protected int idDernier;
 
@@ -38,15 +43,15 @@ public class ChatClient {
 			// On recupere le stub sur l'objet serveur 
 			ChatInterface obj = (ChatInterface) Naming.lookup("//localhost:8080/chat1"); 
 			System.out.println("Serveur trouve");
-			obj.test();
+			//obj.test1();
 			try {
-				obj.who();
+				obj.connect(cli);
 			} catch (Exception e) {
-				System.out.println("pas pu faire who");
+				e.printStackTrace();
 			}
 
 			// On se connecte au serveur 
-			obj.connect(cli);
+			
 			System.out.println("Vous etes connecte");
 
 			DisplayThread dt = new DisplayThread("thread1", obj, cli);

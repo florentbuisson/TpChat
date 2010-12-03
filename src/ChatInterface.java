@@ -14,5 +14,5 @@ public interface ChatInterface extends Remote {
 	
 	public boolean isConnected(ChatClient cli) throws RemoteException ;
 	
-	public void test() throws RemoteException;
+	public void test1() throws RemoteException;
 }

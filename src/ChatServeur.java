@@ -54,7 +54,7 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 		messages.put(messageCount,msg);
 		messageCount++;
 	}
-	// Connection d'un client au serveur
+	// Connexion d'un client au serveur
 	public void connect(ChatClient client) throws RemoteException {
 		if(!connectes.add(client)){
 			System.out.println("Erreur");
@@ -62,7 +62,7 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 			throw ex;
 		}
 	}
-	// Deconnection client
+	// Deconnexion client
 	public void bye(ChatClient client) throws RemoteException {
 		if(!connectes.remove(client)){
 			RemoteException ex = new RemoteException("Impossible de supprimer le client " + client.getNom());
@@ -72,7 +72,7 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 	// Who let the dogs out?
 	public void who() throws RemoteException {
 		for(int i= 0; i < connectes.size(); i++){
-			System.out.println("Membre" + connectes.get(i).getNom() + " bound in registry");
+			System.out.println("Membre " + connectes.get(i).getNom() + " bound in registry");
 		}
 	}
 	// Dites "splayMsgs"
@@ -88,7 +88,7 @@ public class ChatServeur extends UnicastRemoteObject implements ChatInterface{
 		return false;
 	}
 	
-	public void test() {
+	public void test1() throws RemoteException {
 		System.out.println("methode non implementee");
 	}
 }
